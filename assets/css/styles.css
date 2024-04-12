@@ -1,7 +1,9 @@
 :root {
     --fonts: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    --advice-font-size: 1.75rem;
-    --title-font-size: 0.875rem;
+    --title-font-size-mobile: 0.7rem;
+    --title-font-size-desktop: 0.875rem;
+    --advice-font-size-mobile: 1.5rem;
+    --advice-font-size-desktop: 1.75rem;
 
     --background-color: #202632;
     --card-color: #313A49;
@@ -29,44 +31,48 @@ body {
     place-items: center;
 }
 
-.card {
+.content {
+    margin-right: -1px;
+}
+
+#card {
     position: relative;
     background-color: var(--card-color);
     margin-top: calc((var(--dice-height) / 2) * -1);
     width: calc(100% - 32px);
+    transform: translateY(-40px);
     max-width: 540px;
-    border-radius: 15px;
+    border-radius: 10px;
     text-align: center;
-    padding: 47px 52px 72px 52px;
+    padding: 39px 23.5px 64px;
     box-shadow: 5px 5px 30px -5px rgba(0,0,0,0.12);
 }
 
 .title {
     margin: 0;
     color: var(--secondary-color);
-    font-size: var(--title-font-size);
-    letter-spacing: 3.9px;
+    font-size: var(--title-font-size-mobile);
+    letter-spacing: 3.7px;
     font-weight: 500;
 }
 
 .advice {
     color: var(--primary-color);
-    font-size: 1.75rem;
+    font-size: var(--advice-font-size-mobile);
     font-weight: 800;
-    margin: 24px 0 40px;
+    margin: 24px 0 23px;
     letter-spacing: -0.3px;
 }
 
-.advice::before {
-    content: '“';
-    font-size: var(--advice-font-size);
-    letter-spacing: -0.3px;
-}
-
-.advice::after {
-    content: '”';
-    font-size: var(--advice-font-size);
-    letter-spacing: -0.3px;
+.loader {
+    width: 48px;
+    height: 48px;
+    border: 5px solid var(--primary-color);
+    border-bottom-color: var(--secondary-color);
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
 }
 
 .divider {
@@ -83,7 +89,7 @@ body {
     justify-content: center;
 }
 
-.dice {
+#dice {
     display: grid;
     place-items: center;
     position: absolute;
@@ -97,9 +103,46 @@ body {
     transition: 0.3s linear;
 }
 
-.dice:hover {
+#dice:hover {
     cursor: pointer;
     box-shadow: 0 0 30px var(--secondary-color);
+}
+
+/* Animations */
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+} 
+
+/* Responsive */
+@media screen and (min-width: 778px) {
+
+    .content {
+        margin-right: 0;
+    }
+
+    #card {
+        transform: none;
+        border-radius: 15px;
+        padding: 47px 52px 72px;
+    }
+
+    .title {
+        font-size: var(--title-font-size-desktop);
+        letter-spacing: 3.9px;
+        font-weight: 500;
+        margin-right: -1px;
+    }
+    
+    .advice {
+        font-size: var(--advice-font-size-desktop);
+        margin: 24px 0 40px;
+    }
 }
 
 /* Fonts */
