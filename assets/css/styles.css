@@ -153,10 +153,12 @@ body {
     font-family: 'Manrope';
     src: url('../fonts/Manrope/Manrope-ExtraBold.ttf');
     weight: 800;
+    font-display: swap;
 }
 
 @font-face {
     font-family: 'Manrope';
     src: url('../fonts/Manrope/Manrope-Medium.ttf');
     weight: 500;
+    font-display: swap;
 }
